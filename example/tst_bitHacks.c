@@ -34,11 +34,6 @@ int error_count;
 void test_B_EVEN()
 {
     /* test B_EVEN */
-    TEST_OK(B_EVEN(B8(0)), 1);
-    TEST_OK(B_EVEN(B8(00000000)), 1);
-    TEST_OK(B_EVEN(B8(1)), 0);
-    TEST_OK(B_EVEN(B8(11111111)), 0);
-    TEST_OK(B_EVEN(B8(10101010)), 1);
     TEST_OK(checkEven(B8(01010101)), 0);
     TEST_OK(checkEven(44), 1);
     TEST_OK(checkEven(131), 0);
@@ -47,11 +42,6 @@ void test_B_EVEN()
 void test_B_ODD()
 {
     /* test B_ODD */
-    TEST_OK(B_ODD(B8(0)), 0);
-    TEST_OK(B_ODD(B8(00000000)), 0);
-    TEST_OK(B_ODD(B8(1)), 1);
-    TEST_OK(B_ODD(B8(11111111)), 1);
-    TEST_OK(B_ODD(B8(10101010)), 0);
     TEST_OK(checkOdd(B8(01010101)), 1);
     TEST_OK(checkOdd(44), 0);
     TEST_OK(checkOdd(131), 1);
@@ -60,46 +50,6 @@ void test_B_ODD()
 void test_B_IS_SET()
 {
     /* test B_IS_SET */
-    TEST_OK(B_IS_SET(B8(0), 0), 0);
-    TEST_OK(B_IS_SET(B8(00000000), 0), 0);
-    TEST_OK(B_IS_SET(B8(1), 0), 1);
-    TEST_OK(B_IS_SET(B8(11111111), 0), 1);
-    TEST_OK(B_IS_SET(B8(11111111), 1), 1);
-    TEST_OK(B_IS_SET(B8(11111111), 2), 1);
-    TEST_OK(B_IS_SET(B8(11111111), 3), 1);
-    TEST_OK(B_IS_SET(B8(11111111), 4), 1);
-    TEST_OK(B_IS_SET(B8(11111111), 5), 1);
-    TEST_OK(B_IS_SET(B8(11111111), 6), 1);
-    TEST_OK(B_IS_SET(B8(11111111), 7), 1);
-    TEST_OK(B_IS_SET(B8(11110000), 0), 0);
-    TEST_OK(B_IS_SET(B8(11110000), 1), 0);
-    TEST_OK(B_IS_SET(B8(11110000), 2), 0);
-    TEST_OK(B_IS_SET(B8(11110000), 3), 0);
-    TEST_OK(B_IS_SET(B8(11110000), 4), 1);
-    TEST_OK(B_IS_SET(B8(11110000), 5), 1);
-    TEST_OK(B_IS_SET(B8(11110000), 6), 1);
-    TEST_OK(B_IS_SET(B8(11110000), 7), 1);
-    TEST_OK(B_IS_SET(B8(00001111), 0), 1);
-    TEST_OK(B_IS_SET(B8(00001111), 1), 1);
-    TEST_OK(B_IS_SET(B8(00001111), 2), 1);
-    TEST_OK(B_IS_SET(B8(00001111), 3), 1);
-    TEST_OK(B_IS_SET(B8(00001111), 4), 0);
-    TEST_OK(B_IS_SET(B8(00001111), 5), 0);
-    TEST_OK(B_IS_SET(B8(00001111), 6), 0);
-    TEST_OK(B_IS_SET(B8(00001111), 7), 0);
-    TEST_OK(B_IS_SET(B8(10101010), 0), 0);
-    TEST_OK(B_IS_SET(B8(10101010), 1), 1);
-    TEST_OK(B_IS_SET(B8(10101010), 2), 0);
-    TEST_OK(B_IS_SET(B8(10101010), 3), 1);
-    TEST_OK(B_IS_SET(B8(10101010), 4), 0);
-    TEST_OK(B_IS_SET(B8(10101010), 5), 1);
-    TEST_OK(B_IS_SET(B8(10101010), 6), 0);
-    TEST_OK(B_IS_SET(B8(10101010), 7), 1);
-    TEST_OK(B_IS_SET(B8(01010101), 0), 1);
-    TEST_OK(B_IS_SET(B8(01010101), 1), 0);
-    TEST_OK(B_IS_SET(B8(01010101), 2), 1);
-    TEST_OK(B_IS_SET(B8(01010101), 3), 0);
-    TEST_OK(B_IS_SET(B8(01010101), 4), 1);
     TEST_OK(bitIsSet(B8(01010101), 5), 0);
     TEST_OK(bitIsSet(B8(01010101), 6), 1);
     TEST_OK(bitIsSet(B8(01010101), 7), 0);
@@ -110,25 +60,13 @@ void test_B_SET()
     /* test B_SET */
     unsigned char x;
 
-    x = B8(00000000);
-    TEST_OK(B_SET(x, 0), B8(00000001));
-    TEST_OK(B_SET(x, 1), B8(00000011));
-    TEST_OK(B_SET(x, 2), B8(00000111));
-    TEST_OK(B_SET(x, 3), B8(00001111));
-    TEST_OK(B_SET(x, 4), B8(00011111));
-    TEST_OK(B_SET(x, 5), B8(00111111));
+    x = B8(01111111);
     x = bitSet(x, 6);
     TEST_OK(x, B8(01111111));
     x = bitSet(x, 7);
     TEST_OK(x, B8(11111111));
 
     x = B8(11111111);
-    TEST_OK(B_SET(x, 0), B8(11111111));
-    TEST_OK(B_SET(x, 1), B8(11111111));
-    TEST_OK(B_SET(x, 2), B8(11111111));
-    TEST_OK(B_SET(x, 3), B8(11111111));
-    TEST_OK(B_SET(x, 4), B8(11111111));
-    TEST_OK(B_SET(x, 5), B8(11111111));
     x = bitSet(x, 6);
     TEST_OK(x, B8(11111111));
     x = bitSet(x, 7);
@@ -139,29 +77,106 @@ void test_B_UNSET()
 {
     unsigned char x;
    
-    x = B8(11111111);
-    TEST_OK(B_UNSET(x, 0), B8(11111110));
-    TEST_OK(B_UNSET(x, 1), B8(11111100));
-    TEST_OK(B_UNSET(x, 2), B8(11111000));
-    TEST_OK(B_UNSET(x, 3), B8(11110000));
-    TEST_OK(B_UNSET(x, 4), B8(11100000));
-    TEST_OK(B_UNSET(x, 5), B8(11000000));
+    x = B8(10000000);
     x = bitUnSet(x, 6);
     TEST_OK(x, B8(10000000));
     x = bitUnSet(x, 7);
     TEST_OK(x, B8(00000000));
 
     x = B8(00000000);
-    TEST_OK(B_UNSET(x, 0), B8(00000000));
-    TEST_OK(B_UNSET(x, 1), B8(00000000));
-    TEST_OK(B_UNSET(x, 2), B8(00000000));
-    TEST_OK(B_UNSET(x, 3), B8(00000000));
-    TEST_OK(B_UNSET(x, 4), B8(00000000));
-    TEST_OK(B_UNSET(x, 5), B8(00000000));
     x = bitUnSet(x, 6);
     TEST_OK(x, B8(00000000));
     x = bitUnSet(x, 7);
     TEST_OK(x, B8(00000000));
+}
+
+void test_B_TOGGLE()
+{
+    unsigned char x = B8(10111111);
+    x = bitToggle(x, 6);
+    TEST_OK(x, B8(11111111));
+    x = bitToggle(x, 7);
+    TEST_OK(x, B8(01111111));
+    x = bitToggle(x, 7);
+    TEST_OK(x, B8(11111111));
+}
+
+void test_B_TURNOFF_1()
+{
+    unsigned char x = B8(10000000);
+    x = bitTurnOff(x);
+    TEST_OK(x, B8(00000000));
+
+    x = B8(10101010);
+    x = bitTurnOff(x);
+    TEST_OK(x, B8(10101000));
+
+    x = B8(01010101);
+    x = bitTurnOff(x);
+    TEST_OK(x, B8(01010100));
+}
+
+void test_B_ISOLATE_1()
+{
+    unsigned char x;
+
+    x = B8(10000000);
+    x = bitIsolate(x);
+    TEST_OK(x, B8(10000000));
+
+    x = B8(10001001);
+    x = bitIsolate(x);
+    TEST_OK(x, B8(00000001));
+
+    x = B8(10001000);
+    x = bitIsolate(x);
+    TEST_OK(x, B8(00001000));
+}
+
+void test_B_PROPAGATE_1()
+{
+    unsigned char x;
+
+    x = B8(00000000);
+    x = bitPropagate_1(x);
+    TEST_OK(x, B8(11111111));
+    x = bitPropagate_1(x);
+    TEST_OK(x, B8(11111111));
+
+    x = B8(10101000);
+    x = bitPropagate_1(x);
+    TEST_OK(x, B8(10101111));
+    x = bitPropagate_1(x);
+    TEST_OK(x, B8(10101111));
+
+    x = B8(10101010);
+    x = bitPropagate_1(x);
+    TEST_OK(x, B8(10101011));
+    x = bitPropagate_1(x);
+    TEST_OK(x, B8(10101011));
+
+    x = B8(10101010);
+    x = bitPropagate_1(x);
+    TEST_OK(x, B8(10101011));
+    x = bitPropagate_1(x);
+    TEST_OK(x, B8(10101011));
+}
+
+void test_B_ISOLATE_0()
+{
+    unsigned char x;
+
+    x = B8(00000111);
+    x = bitIsolate_0(x);
+    TEST_OK(x, B8(00001000));
+
+    x = B8(01011111);
+    x = bitIsolate_0(x);
+    TEST_OK(x, B8(00100000));
+
+    x = B8(01111111);
+    x = bitIsolate_0(x);
+    TEST_OK(x, B8(10000000));
 }
 
 int main()
@@ -171,8 +186,30 @@ int main()
     test_B_IS_SET();
     test_B_SET();
     test_B_UNSET();
+    test_B_TOGGLE();
+    test_B_TURNOFF_1();
+    test_B_ISOLATE_1();
+    test_B_PROPAGATE_1();
+    test_B_ISOLATE_0();
 
     TEST_END;
+    
+    unsigned char ascii_char = 'A';        /*  char = 8 bits only */
+  int test_nbr = 10;
+  printf("Starting character = %c\n", ascii_char);
+  /*  The 5th bit position determines if the character is
+      uppercase or lowercase.
+      5th bit = 0  - Uppercase
+      5th bit = 1  - Lowercase      */
+  printf("\nTurn 5th bit on = %c\n", bitSetFlag(ascii_char, bitPos(5)) );
+  printf("Turn 5th bit off = %c\n\n", bitClrFlag(ascii_char, bitPos(5)) );
+  printf("Look at shifting bits\n");
+  printf("=====================\n");
+  printf("Current value = %d\n", test_nbr);
+  printf("Shifting one position left = %d\n",
+         test_nbr = bitShiftL(test_nbr, 1) );
+  printf("Shifting two positions right = %d\n",
+         bitShiftR(test_nbr, 2) );
 
     return error_count ? EXIT_FAILURE : EXIT_SUCCESS;
 }
