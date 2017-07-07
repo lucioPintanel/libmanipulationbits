@@ -2,6 +2,25 @@
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
+Arvore de diretórios:
+.
+├── bin
+│   └── tst_bitHacks
+├── doc
+├── example
+│   ├── Makefile
+│   └── tst_bitHacks.c
+├── includes
+│   └── bithacks.h
+├── lib
+│   └── libbitHacks.a
+├── README.md
+└── scr
+    ├── bitHacks.c
+    ├── bitHacks.o
+    └── Makefile
+
+
 ### What is this repository for? ###
 
 * Quick summary
