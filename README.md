@@ -6,28 +6,17 @@ This document describes how to compile the static library and how to use this li
 ### What is this repository for? ###
 
 * Quick summary
-  
+  This repository contains a static library with its source codes and usage examples.
 
-* Version 1.0.00
+* Version
+  The current version is 1.0.00.
 
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ### How do I get set up? ###
 
 * Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
+  Baixar o repositório em uma pasta desjada e acessar a pasta scr/ e executo o comando make.
+
 * How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+Enter the example / folder and run the make command. The generated binary is located in the bin / folder. Enter this bin / folder and run the existing binary.
