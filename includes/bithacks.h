@@ -13,6 +13,16 @@
 #ifndef BITHACKS_H
 #define BITHACKS_H
 
+/***	SESSION INCLUDE	***********************************************/
+#include <stdio.h>
+
+/**********************************************************************/
+
+/***	SESSION DEFINE, STRUCT, TYPEDEF	*******************************/
+
+/**********************************************************************/
+
+/***	SESSION MACROS	***********************************************/
 #define HEXIFY(X) 0x##X##LU
 
 #define B8IFY(Y) (((Y&0x0000000FLU)?1:0)  + \
@@ -26,31 +36,13 @@
 
 #define B8(Z) ((unsigned char)B8IFY(HEXIFY(Z)))
 
-/*
-** Bit hack routines. See the following article for explanation:
-** http://www.catonmat.net/blog/low-level-bit-hacks-you-absolutely-must-know
-**
-*/
+/**********************************************************************/
 
-#define SET_MFLAG(N, F, V)    ({ \
-                                typeof (N) __n = (N); \
-                                typeof (F) __f = (F); \
-                                typeof (V) __v = (V); \
-                                (CLR_FLAG(__n, __f), SET_FLAG(__n, __v)); \
-                              })
+/***	SESSION VARIAVEIS GLOBAIS	*******************************/
 
-#define CLR_MFLAG(N, F)       ({ \
-                                typeof (N) __n = (N); \
-                                typeof (F) __f = (F); \
-                                ((__n) &= ~(__f)); \
-                              })
-     
-#define GET_MFLAG(N, F)       ({ \
-                                typeof (N) __n = (N); \
-                                typeof (F) __f = (F); \
-                                ((__n) & (__f)); \
-                              })
+/**********************************************************************/
 
+/***	SESSION PROTOTIPO DE FUNCOES	*******************************/
 int checkEven(int x);
 int checkOdd(int x);
 int bitIsSet(int x, int n);
@@ -67,4 +59,5 @@ int bitClrFlag(int x, int n);
 int bitShiftL(int x, int n);
 int bitShiftR(int x, int n);
 
-#endif
+#endif 
+/***	END BITHACKS_H	***/

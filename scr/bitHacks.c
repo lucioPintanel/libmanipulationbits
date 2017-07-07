@@ -21,7 +21,13 @@
 
 /**********************************************************************/
 
-/***	SESSION MACROS	*******************************/
+/***	SESSION MACROS	***********************************************/
+/*
+** Bit hack routines. See the following article for explanation:
+** http://www.catonmat.net/blog/low-level-bit-hacks-you-absolutely-must-know
+**
+*/
+
 /* test if x is even */
 #define B_EVEN(x)        ({ \
 			    typeof(x) __x = x; \
@@ -140,6 +146,25 @@
                                 (unsigned)(__n) >> (__f); \
                               })
 
+#define SET_MFLAG(N, F, V)    ({ \
+                                typeof (N) __n = (N); \
+                                typeof (F) __f = (F); \
+                                typeof (V) __v = (V); \
+                                (CLR_FLAG(__n, __f), SET_FLAG(__n, __v)); \
+                              })
+
+#define CLR_MFLAG(N, F)       ({ \
+                                typeof (N) __n = (N); \
+                                typeof (F) __f = (F); \
+                                ((__n) &= ~(__f)); \
+                              })
+     
+#define GET_MFLAG(N, F)       ({ \
+                                typeof (N) __n = (N); \
+                                typeof (F) __f = (F); \
+                                ((__n) & (__f)); \
+                              })
+
 /**********************************************************************/
 
 /***	SESSION VARIAVEIS GLOBAIS	*******************************/
@@ -195,13 +220,11 @@ int bitIsSet(int x, int n)
 int bitSet(int x, int n)
 {
 	return B_SET(x, n);
-	;
 }
 
 int bitUnSet(int x, int n)
 {
 	return B_UNSET(x, n);
-	;
 }
 
 int bitToggle(int x, int n)
@@ -258,6 +281,5 @@ int bitShiftR(int x, int n)
 {
 	return BIT_SHIFTR(x, n);
 }
-
 
 /* end BITHACKS_C */
