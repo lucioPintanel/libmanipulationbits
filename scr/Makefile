@@ -25,9 +25,9 @@ NAME = libbitHacks.a
 OUT = $(PATHOUT)/$(NAME)
 
 # Versao da biblioteca (será passado para o código)
-LIBDBGVERSAO_MAX=0
+LIBDBGVERSAO_MAX=1
 LIBDBGVERSAO_MIN=0
-LIBDBGVERSAO_NRO=1
+LIBDBGVERSAO_NRO=0
 #versao da biblioteca no formato de um inteiro a ser passada para a aplicacao
 DEFVRS_LIB = $(LIBDBGVERSAO_MAX)$(LIBDBGVERSAO_MIN)$(LIBDBGVERSAO_NRO)
  
