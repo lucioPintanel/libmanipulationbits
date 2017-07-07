@@ -4,7 +4,7 @@ This README would normally document whatever steps are necessary to get your app
 
 Arvore de diretórios:
 .
-├── bin
+├── bin \n
 │   └── tst_bitHacks
 ├── doc
 ├── example
