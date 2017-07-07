@@ -11,7 +11,7 @@ This document describes how to compile the static library and how to use this li
 * Version
   The current version is 1.0.00.
 
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* [Learn libmanipulationbits/WiKi](https://bitbucket.org/lucioPintanel/libmanipulationbits/wiki/Home)
 
 ### How do I get set up? ###
 
